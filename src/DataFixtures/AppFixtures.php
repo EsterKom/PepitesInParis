@@ -58,17 +58,6 @@ class AppFixtures extends Fixture
         $manager->persist($user);
         }
 
-        //set Reviews
-        $dataReviews = [];
-        for ($i = 0; $i< 15; $i++) {
-            $review = new review();
-            $review
-                ->setRating($faker->numberBetween($min = 0, $max = 5))
-                ->setComment($faker->sentence($nbWords = 30, $variableNbWords = true))
-                ->setUser($faker->randomElement($dataUsers));
-        $dataReviews[]= $review;  
-        $manager->persist($review);
-        }
         
         //set Places
         $dataPlaces = [];
@@ -84,6 +73,19 @@ class AppFixtures extends Fixture
                 //->setImage($faker->imageUrl(640, 480, 'animals', true));
         $dataPlaces[]= $place;  
         $manager->persist($place);
+        }
+
+        //set Reviews
+        $dataReviews = [];
+        for ($i = 0; $i< 15; $i++) {
+            $review = new review();
+            $review
+                ->setRating($faker->numberBetween($min = 0, $max = 5))
+                ->setComment($faker->sentence($nbWords = 30, $variableNbWords = true))
+                ->setUser($faker->randomElement($dataUsers))
+                ->setPlace($faker->randomElement($dataPlaces));
+        $dataReviews[]= $review;  
+        $manager->persist($review);
         }
 
         $manager->flush();
