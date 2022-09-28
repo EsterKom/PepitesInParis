@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} - All places!{% endblock %}
+
+{% block body %}
+<h1>List de tous les articles</h1>
+
+<div class="row">
+{% for place in places %}
+    <div class="col-3 my-2">
+        <div class="card">
+            <img src="{{ asset('')}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">{{place.name}}</h4>
+              <h5 class="card-title">{{place.subtitle}}</h5>
+              <p class="text">{{place.Category}}</p>
+              <a href="{{ path('app_place_show', {'id': place.id}) }}">Read more</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
