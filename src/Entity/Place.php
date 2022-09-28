@@ -36,6 +36,9 @@ class Place
     #[ORM\OneToMany(mappedBy: 'place', targetEntity: Review::class)]
     private Collection $review;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->review = new ArrayCollection();
@@ -106,6 +109,18 @@ class Place
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->Image = $image;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Review>
      */
@@ -135,4 +150,6 @@ class Place
 
         return $this;
     }
+
+ 
 }

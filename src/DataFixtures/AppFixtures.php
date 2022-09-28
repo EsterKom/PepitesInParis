@@ -28,9 +28,9 @@ class AppFixtures extends Fixture
         //set Categories
         $categories=['Buy', 'See', 'Eat'];
         $dataCategories = [];
-        $category = new Category();
         for ($i = 0; $i < count($categories); $i++) {
-        $category->setName($faker->sentence($nbWords = 1, $variableNbWords = true));
+        $category = new Category();
+        $category->setName($categories[$i]);
         $dataCategories[] = $category;
         $manager->persist($category);
     }
@@ -56,7 +56,7 @@ class AppFixtures extends Fixture
         $user->setPassword($password);
         $dataUsers[] = $user;
         $manager->persist($user);
-}
+        }
 
         //set Reviews
         $dataReviews = [];
@@ -69,7 +69,7 @@ class AppFixtures extends Fixture
         $dataReviews[]= $review;  
         $manager->persist($review);
         }
-
+        
         //set Places
         $dataPlaces = [];
         for ($i = 0; $i< 15; $i++) {
@@ -81,11 +81,10 @@ class AppFixtures extends Fixture
                 ->setCategory($faker->randomElement($dataCategories))
                 ->setUser($faker->randomElement($dataUsers))
                 ->getReview($faker->randomElement($dataReviews));
+                //->setImage($faker->imageUrl(640, 480, 'animals', true));
         $dataPlaces[]= $place;  
         $manager->persist($place);
         }
-
-        
 
         $manager->flush();
     }

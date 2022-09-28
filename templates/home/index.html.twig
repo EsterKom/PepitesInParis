@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<main>
+    <section class="p-5 text-center bg-image hero"> 
+        <div class="mask">
+            <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-black">
+                <h1 class="mb-3 mt-4 fw600 text-medium">Welcome to <span class="madi text_imp fw600">Pépites in Paris</span></h1>
+                <h2 class="mb-3">We are a community sharing the <span class="display-6 madi">raisins</span> in the Parisian cake</h2>
+                <a class="btn btn-lg madi text_imp" href="{{ path('app_register')}}" role="button">Join us</a>
+            </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

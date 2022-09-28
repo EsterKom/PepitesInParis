@@ -2,9 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>PiP{% block title %} - Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?&family=Ms+Madi&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Chango&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -14,6 +20,41 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid ms-3 d-flex">
+                    <div class="chango">
+                        <a href="{{ path('app_home')}}"><p class="chango text_imp gradient-text">PiParis</p></a>
+                        <!-- <img a href="/" id="paris" src="assets/img/logoparisnew.png" alt="Site logo"> -->
+                    </div>
+                    <ul class="nav justify-content-center">
+                        <li class="flex flex-center p-3">
+                            <a class="" href="/"><img src="https://img.icons8.com/clouds/100/000000/shopping-bag.png" alt="Shoppingbag from Icons8">To buy</a>
+                        </li>
+                        <li class="flex flex-center">
+                            <a class="p-3" href="/"><img src="https://img.icons8.com/external-wanicon-lineal-color-wanicon/64/000000/external-eiffel-tower-landmark-wanicon-lineal-color-wanicon.png" alt="icon by icons8">To visit</a>
+                        </li>
+                        <li class="flex flex-center">
+                            <a class="p-3" href="/"><img src="https://img.icons8.com/clouds/100/000000/plate-1.png" alt="Plate from Icons8">To eat</a>
+                        </li>
+                    </ul>
+                    <div class="user_btn">
+                    {% if app.user %}
+                        <a href="{{ path('app_logout') }}"><button id="user_signup" class="login-button rounded-circle p-4">Logout</button></a>
+                        {% else %}
+                        <a href="{{ path('app_login') }}"><button id="user_signup" class="login-button rounded-circle p-4">Login</button></a>
+                    {% endif %}
+                    </div>
+                </div>
+                <!-- click on se connecter, on appelle la fonction OpenPopup -->
+            </nav>
+                <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid flex"> -->
+        </header>
+        
         {% block body %}{% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/main.js')}}"></script>    
     </body>
 </html>

@@ -20,19 +20,12 @@ class Review
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Comment = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $CreatedAt = null;
-
     #[ORM\ManyToOne(inversedBy: 'reviews')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'review')]
     private ?Place $place = null;
-
-    public function __construct() {
-        $this->$createdAt = new \DateTimeInterface();
-}
 
     public function getId(): ?int
     {
@@ -63,18 +56,6 @@ class Review
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->CreatedAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $CreatedAt): self
-    {
-        $this->CreatedAt = $CreatedAt;
-
-        return $this;
-    }
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -98,4 +79,5 @@ class Review
 
         return $this;
     }
+
 }
