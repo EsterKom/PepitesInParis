@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Place;
+use App\Repository\CategoryRepository;
+use App\Repository\PlaceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,13 +35,29 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/category', name: 'app_home_category')]
+    #[Route('/category', name: 'app_home_category', methods: ['GET'])]
     public function category(): Response
     {
-        return $this->render('home/category.html.twig', [
-            'controller_name' => 'HomeController',
+       return $this->render('home/category.html.twig', [
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
-    
+
+    #[Route('/places', name: 'app_home_places', methods: ['GET'])]
+    public function allPlaces(PlaceRepository $placeRepository): Response
+    {
+        return $this->render('home/places.html.twig', [
+            'places' => $placeRepository->findAll(),
+        ]);
+    }
+
+    #[Route('/{id}', name: 'app_place_show', methods: ['GET'])]
+    public function show(Place $place): Response
+    {
+        return $this->render('home/place.html.twig', [
+            'place' => $place,
+        ]);
+    }
+
 }

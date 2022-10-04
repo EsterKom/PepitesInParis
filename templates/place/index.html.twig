@@ -25,8 +25,10 @@
                 <td>{{ place.description }}</td>
                 <td>{{ place.image }}</td>
                 <td>
+
                     <a href="{{ path('app_place_show', {'id': place.id}) }}">show</a>
                     <a href="{{ path('app_place_edit', {'id': place.id}) }}">edit</a>
+
                 </td>
             </tr>
         {% else %}
@@ -38,4 +40,5 @@
     </table>
 
     <a href="{{ path('app_place_new') }}">Create new</a>
+   
 {% endblock %}

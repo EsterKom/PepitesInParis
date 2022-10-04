@@ -27,10 +27,11 @@ class Category
     }
 
     public function __toString()
-    {
-        return $this->id .' ' .$this->name;
+    {    
+        return $this->name;
     }
-    
+
+
     public function getId(): ?int
     {
         return $this->id;

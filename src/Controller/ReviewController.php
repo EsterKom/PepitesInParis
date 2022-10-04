@@ -59,12 +59,14 @@ class ReviewController extends AbstractController
 
             return $this->redirectToRoute('app_review_index', [], Response::HTTP_SEE_OTHER);
         }
+
         // if ($new) {
         //     $createdBy = setUser($this->getUser());
         //     $message = "Review has been added";
         // } else {
         //     $message = "Review could not be added";
         // }
+
 
         return $this->renderForm('review/edit.html.twig', [
             'review' => $review,
