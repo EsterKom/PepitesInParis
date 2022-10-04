@@ -42,7 +42,20 @@ class PlaceRepository extends ServiceEntityRepository
 //    /**
 //     * @return Place[] Returns an array of Place objects
 //     */
-//    public function findByExampleField($value): array
+   public function findByUserId($user): array
+   {
+       return $this->createQueryBuilder('p')
+           ->andWhere('p.user = :app.user')
+            ->setParameter('app.user', $user)
+//            ->orderBy('p.id', 'ASC')
+//            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+// public function findByExampleField($value): array
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')

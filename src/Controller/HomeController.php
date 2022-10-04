@@ -16,7 +16,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'app_home_about')]
+    #[Route('/about', name: 'app_home_about')]
     public function about(): Response
     {
         return $this->render('home/about.html.twig', [
@@ -24,7 +24,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'app_home_contact')]
+    #[Route('/contact', name: 'app_home_contact')]
     public function contact(): Response
     {
         return $this->render('home/contact.html.twig', [
@@ -32,27 +32,13 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'app_home_eat')]
-    public function eat(): Response
+    #[Route('/category', name: 'app_home_category')]
+    public function category(): Response
     {
-        return $this->render('home/about.html.twig', [
+        return $this->render('home/category.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
 
-    #[Route('/', name: 'app_home_visit')]
-    public function visit(): Response
-    {
-        return $this->render('home/about.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
-
-    #[Route('/', name: 'app_home_buy')]
-    public function buy(): Response
-    {
-        return $this->render('home/about.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+    
 }

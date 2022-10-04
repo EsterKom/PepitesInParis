@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	-
+{% endblock %}
+
+{% block body %}
+	<div class="">
+		<h1>Hello !
+			{{app.user.username}} 
+			🌞</h1>
+	</div>
+
+	{# {{ dump(username) }} #}
+
+	<div>
+		<h3>What have we been up to since your last visit? Check out the latest pépites added by your community.</h3>
+		<div id="map"></div>
+		<aside>
+			<h4>Did you check out any of your bookmarked places?</h4>
+			<div class="bookmark"></div>
+		</aside>
+
+		<section>
+			<div>
+				<h4>My added péptites</h4>
+				<div>Add places (name) + CRUD</div>
+			</div>
+			<div>
+				<h4>My added reviews</h4>
+				<div>Add reviews (name) + CRUD</div>
+			</div>
+		</section>
+	{% endblock %}
