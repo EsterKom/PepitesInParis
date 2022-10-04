@@ -36,12 +36,13 @@ class HomeController extends AbstractController
     }
 
     #[Route('/category', name: 'app_home_category', methods: ['GET'])]
-    public function category(CategoryRepository $categoryRepository): Response
+    public function category(): Response
     {
-        return $this->render('home/category.html.twig', [
+       return $this->render('home/category.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
+
 
     #[Route('/places', name: 'app_home_places', methods: ['GET'])]
     public function allPlaces(PlaceRepository $placeRepository): Response
@@ -58,4 +59,5 @@ class HomeController extends AbstractController
             'place' => $place,
         ]);
     }
+
 }

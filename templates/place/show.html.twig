@@ -8,10 +8,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Image</th>
-                <td>{{ place.image }}</td>
-            </tr>
-            <tr>
                 <th>Id</th>
                 <td>{{ place.id }}</td>
             </tr>
@@ -27,12 +23,17 @@
                 <th>Description</th>
                 <td>{{ place.description }}</td>
             </tr>
+
+            <tr>
+                <th>Image</th>
+                <td>{{ place.image }}</td>
+            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('admin_place_index') }}">back to list</a>
+    <a href="{{ path('app_place_index') }}">back to list</a>
 
-    <a href="{{ path('admin_place_edit', {'id': place.id}) }}">edit</a>
+    <a href="{{ path('app_place_edit', {'id': place.id}) }}">edit</a>
 
     {{ include('place/_delete_form.html.twig') }}
 {% endblock %}
