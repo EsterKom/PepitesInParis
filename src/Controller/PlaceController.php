@@ -56,6 +56,7 @@ class PlaceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $place->setUser($this->getUser());
             $placeRepository->save($place, true);
 
             return $this->redirectToRoute('app_place_index', [], Response::HTTP_SEE_OTHER);
