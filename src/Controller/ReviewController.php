@@ -29,6 +29,7 @@ class ReviewController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $review->setUser($this->getUser());
             $reviewRepository->save($review, true);
 
             return $this->redirectToRoute('app_review_index', [], Response::HTTP_SEE_OTHER);

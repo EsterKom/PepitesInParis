@@ -14,7 +14,6 @@ class ReviewType extends AbstractType
         $builder
             ->add('rating')
             ->add('Comment')
-            ->add('user')
             ->add('place')
         ;
     }

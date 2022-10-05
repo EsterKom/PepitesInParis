@@ -17,7 +17,6 @@ class PlaceType extends AbstractType
             ->add('description')
             ->add('image')
             ->add('category')
-            ->add('user')
         ;
     }
 
