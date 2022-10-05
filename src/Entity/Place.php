@@ -39,6 +39,11 @@ class Place
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    public function __toString()
+    {    
+        return $this->name;
+    }
+    
     public function __construct()
     {
         $this->review = new ArrayCollection();
