@@ -15,6 +15,9 @@ class Review
     private ?int $id = null;
 
     #[ORM\Column]
+    private ?bool $isPublic = null;
+
+    #[ORM\Column]
     private ?int $rating = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -76,6 +79,18 @@ class Review
     public function setPlace(?Place $place): self
     {
         $this->place = $place;
+
+        return $this;
+    }
+
+    public function isIsPublic(): ?bool
+    {
+        return $this->isPublic;
+    }
+
+    public function setIsPublic(bool $isPublic): self
+    {
+        $this->isPublic = $isPublic;
 
         return $this;
     }

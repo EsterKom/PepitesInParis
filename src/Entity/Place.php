@@ -17,6 +17,9 @@ class Place
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column]
+    private ?bool $isPublic = null;
+
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
@@ -26,6 +29,9 @@ class Place
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+    
     #[ORM\ManyToOne(inversedBy: 'places')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
@@ -36,9 +42,6 @@ class Place
 
     #[ORM\OneToMany(mappedBy: 'place', targetEntity: Review::class)]
     private Collection $review;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
 
     public function __toString()
     {    
@@ -159,6 +162,18 @@ class Place
                 $review->setPlace(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isIsPublic(): ?bool
+    {
+        return $this->isPublic;
+    }
+
+    public function setIsPublic(bool $isPublic): self
+    {
+        $this->isPublic = $isPublic;
 
         return $this;
     }

@@ -65,7 +65,8 @@ class AppFixtures extends Fixture
             $review
                 ->setRating($faker->numberBetween($min = 0, $max = 5))
                 ->setComment($faker->sentence($nbWords = 30, $variableNbWords = true))
-                ->setUser($faker->randomElement($dataUsers));
+                ->setUser($faker->randomElement($dataUsers))
+                ->setisPublic(mt_rand(0, 1) == 1 ? true : false);
         $dataReviews[]= $review;  
         $manager->persist($review);
         }
@@ -80,8 +81,9 @@ class AppFixtures extends Fixture
                 ->setDescription($faker->sentence($nbWords = 100, $variableNbWords = true))
                 ->setCategory($faker->randomElement($dataCategories))
                 ->setUser($faker->randomElement($dataUsers))
-                ->getReview($faker->randomElement($dataReviews));
-                //->setImage($faker->imageUrl(640, 480, 'animals', true));
+                ->getReview($faker->randomElement($dataReviews))
+                //->setImage($faker->imageUrl(640, 480, 'animals', true))
+                ->setisPublic(mt_rand(0, 1) == 1 ? true : false);
         $dataPlaces[]= $place;  
         $manager->persist($place);
         }
