@@ -30,9 +30,12 @@
         </tbody>
     </table>
 
+    {#{{dump(allRating)}}#}
     <a href="{{ path('app_place_index') }}">back to list</a>
 
     <a href="{{ path('app_place_edit', {'id': place.id}) }}">edit</a>
 
     {{ include('place/_delete_form.html.twig') }}
+
+    {# {{ place.reviewsByUserAndPlace}} #}
 {% endblock %}

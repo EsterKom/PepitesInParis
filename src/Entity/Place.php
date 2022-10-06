@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\ReviewRepository;
 use App\Repository\PlaceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -47,6 +48,12 @@ class Place
     public function __construct()
     {
         $this->review = new ArrayCollection();
+    }
+
+    public function reviewsByUserAndPlace(): Collection
+    {
+       // $criteria = PlaceRepository::reviewsByUserAndPlace();
+        return $this->review->matching(ReviewRepository::reviewsByUserAndPlace());
     }
 
     public function getId(): ?int

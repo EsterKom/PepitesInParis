@@ -3,39 +3,51 @@
 {% block title %}Place index{% endblock %}
 
 {% block body %}
-    <h1>Place index</h1>
+    <section class="container">
+        
+        <h1>All our pépites</h1>
+        <h3>lorem</h3>
+        <div class="card">
+                <div class="card-header">
+                    Quote
+                </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p>A well-known quote, contained in a blockquote element. - get random quote!!! </p>
+                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    </section>  
+     <div class="container-fluid">
+    <form class="d-flex justify-content-end mt-4" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Subtitle</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for place in places %}
-            <tr>
-                <td>{{ place.id }}</td>
-                <td>{{ place.name }}</td>
-                <td>{{ place.subtitle }}</td>
-                <td>{{ place.description }}</td>
-                <td>{{ place.image }}</td>
-                <td>
-                    <a href="{{ path('app_place_show', {'id': place.id}) }}">show</a>
-                    <a href="{{ path('app_place_edit', {'id': place.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+    <section class="container-fluid">
+        <div class='row'>
+            {% for place in places %}
+                <div class='col-4'>
+                        <div class="card border-info mb-3 m-4" style="width">
+                            <div class="card-header"><a href="{{ path('app_place_new')}}">{{place.category}}</a></div>
+                                <img src="{{ place.image }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">{{ place.name }}</h5>
+                                <p class="card-text">{{place.description|length > 100 ? place.description|slice(0, 50) ~ '...' : place.description}}</p>
+                                <a href="{{ path('app_place_show', {'id': place.id}) }}" class="btn btn-primary">Read more</a>
+                        
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_place_show', {'id': place.id}) }}" class="btn btn-warning">show</a>
+                                <a href="{{ path('app_place_edit', {'id': place.id}) }}" class="btn btn-info">edit</a>
+                            {% endif %}
+                            </div>
+                        </div>    
+                </div>
+            {% endfor %}     
+        </div>
+    </section>  
+    
     <a href="{{ path('app_place_new') }}">Create new</a>
 {% endblock %}

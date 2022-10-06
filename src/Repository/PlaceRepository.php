@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+//use Doctrine\Common\Collections\Criteria;
 use App\Entity\Place;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -16,10 +17,25 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PlaceRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+   
+     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Place::class);
     }
+        
+    // public function findOneByIdJoinedToReview(int $placeId): ?Place
+    // {
+    //     $entityManager = $this->getEntityManager();
+
+    //     $query = $entityManager->createQuery(
+    //         'SELECT p, r
+    //         FROM App\Entity\Place p
+    //         INNER JOIN p.review r
+    //         WHERE p.id = :id'
+    //     )->setParameter('id', $placeId);
+
+    //     return $query->getOneOrNullResult();
+    // }
 
     public function save(Place $entity, bool $flush = false): void
     {
@@ -38,6 +54,7 @@ class PlaceRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
 
 //    /**
 //     * @return Place[] Returns an array of Place objects

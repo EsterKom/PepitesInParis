@@ -15,14 +15,14 @@
             </tr>
         </thead>
         <tbody>
-        {% for review in reviews %}
+        {% for authoreview in authoreviews %}
             <tr>
-                <td>{{ review.id }}</td>
-                <td>{{ review.rating }}</td>
-                <td>{{ review.Comment }}</td>
+                <td>{{ authoreview.id }}</td>
+                <td>{{ authoreview.rating }}</td>
+                <td>{{ authoreview.Comment }}</td>
                 <td>
-                    <a href="{{ path('app_review_show', {'id': review.id}) }}">show</a>
-                    <a href="{{ path('app_review_edit', {'id': review.id}) }}">edit</a>
+                    <a href="{{ path('app_review_show', {'id': authoreview.id}) }}">show</a>
+                    <a href="{{ path('app_review_edit', {'id': authoreview.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
